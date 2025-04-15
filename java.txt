@@ -1,0 +1,50 @@
+package salariofunc;
+import java.util.Scanner;
+public class SalarioFunc {
+    public static void main(String[] args) {
+        try (Scanner read = new Scanner(System.in)) {
+            Funcionario x;
+            
+            x = new Funcionario();
+            System.out.println("Digite seu nome: ");
+            x.nome = read.nextLine();
+            
+            System.out.println("Digite o salário bruto: ");
+            x.SalarioBruto = read.nextDouble();
+            System.out.println("Digite os impostos: ");
+            x.Impostos = read.nextDouble();
+            
+            double salarioliq = x.salarioLiquido();
+            System.out.printf("o %s tem : %.2f de salário liquido\n",x.nome, salarioliq);
+            
+            
+            System.out.println("Insira o percentual de aumento diretamnete no salario bruto: ");
+            double percentual = read.nextDouble();
+            double salarioAumentado = x.aumentaSalario(percentual);
+            System.out.printf("Salário com aumento de %.2f% resultou em: \n %.2f", percentual, salarioAumentado );
+            
+            System.out.println("Fim do programa. Obrigado!");
+        }
+    }
+    
+}
+
+
+
+
+package salariofunc;
+public class Funcionario {
+    public String nome;
+    public double SalarioBruto;
+    public double Impostos;
+    
+    public double salarioLiquido(){
+        double impostoCalculado = SalarioBruto * (Impostos / 100.0);
+        return SalarioBruto - impostoCalculado;
+    }
+    public double aumentaSalario(double porcentagem){
+        porcentagem = SalarioBruto * (porcentagem / 100);
+        SalarioBruto = SalarioBruto + porcentagem;
+        return SalarioBruto;
+    }
+}
