@@ -1,0 +1,72 @@
+Principal  
+	 package javaapplication13;
+
+
+	 public class JavaApplication13 {
+
+    
+    	  public static void main(String[] args) {
+         	// TODO code application logic here
+         	Carro meuCarro = new Carro("Ford", "Focus", 2020, 4);
+       		meuCarro.exibirInformacoes();
+    	  }
+    
+	}
+
+Base/SuperClass
+
+      
+	package javaapplication13;
+	public class Veiculo {
+    		private String marca;
+    		private String modelo;
+    		private int ano;
+    
+     	public Veiculo(String marca, String modelo, int ano) {
+       		this.marca = marca;
+        	this.modelo = modelo;
+        	this.ano = ano;
+    		}
+
+    	// Método público para exibir as informações do veículo
+    	public void exibirInformacoes() {
+        	System.out.println("Marca: " + marca);
+        	System.out.println("Modelo: " + modelo);
+        	System.out.println("Ano: " + ano);
+    		}
+	}
+
+Classe filha/herda
+
+	package javaapplication13;
+
+	public class Carro extends Veiculo {
+    		private int numeroDePortas;
+
+    	public Carro(String marca, String modelo, int ano, int numeroDePortas) {
+        	super(marca, modelo, ano); // chama o construtor da superclasse
+        	this.numeroDePortas = numeroDePortas;
+    		}
+    	// Sobrescrevendo o método da superclasse (opcional)
+    	@Override
+    	public void exibirInformacoes() {
+        	super.exibirInformacoes(); // exibe os dados da superclasse
+        	System.out.println("Número de portas: " + numeroDePortas);
+    		}
+	}
+Classe filha/herda
+	package javaapplication13;
+
+	public class Caminhao extends Veiculo {
+   	  private double capacidadeCarga;
+
+    	public Caminhao(String marca, String modelo, int ano) {
+        	super(marca, modelo, ano);
+    		}
+     	@Override
+    	public void exibirInformacoes() {
+        	super.exibirInformacoes(); // exibe os dados da superclasse
+        	System.out.println("Número de portas: " + capacidadeCarga);
+    		}
+	}
+
